@@ -1,6 +1,13 @@
 name: build
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
 
 env:
   CARGO_TERM_COLOR: always
@@ -38,12 +45,6 @@ jobs:
         with:
           command: clippy
           args: --all-targets
-
-      - name: Annotate commit with clippy warnings
-        uses: actions-rs/clippy-check@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          args: --all-features
 
   check-version:
     needs: build
