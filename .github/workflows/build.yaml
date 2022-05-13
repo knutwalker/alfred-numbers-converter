@@ -51,6 +51,7 @@ jobs:
   check-version:
     needs: build
     if: startsWith(github.ref, 'refs/tags/')
+    name: Check release version
 
     runs-on: ubuntu-latest
 
@@ -68,6 +69,9 @@ jobs:
   release:
     needs: check-version
     runs-on: macos-latest
+    name: Release Workflow
+    permissions:
+      contents: write
 
     strategy:
       matrix:
@@ -106,7 +110,6 @@ jobs:
           echo "::set-output name=path::$archive"
 
       - uses: softprops/action-gh-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           files: ${{ steps.archive.outputs.path }}
+          token: ${{ secrets.GITHUB_TOKEN }}
