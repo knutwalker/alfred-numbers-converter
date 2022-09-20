@@ -17,13 +17,20 @@ checksum = "1aab8fc367588b89dcee83ab0fd66b72b50b72fa1904d7095045ace2b0c81c35"
 
 [[package]]
 name = "powerpack"
-version = "0.4.1"
+version = "0.4.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "cda874a949a1ce7491edc4a95da370c377a6d242253b9ba9cc284b103dbf9886"
+checksum = "0f52fb1bb21412fe552f9849152a3d7d8ce0b510ab6792da2f39af2b4df947c6"
 dependencies = [
+ "powerpack-env",
  "serde",
  "serde_json",
 ]
+
+[[package]]
+name = "powerpack-env"
+version = "0.4.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "14518ca82daa8426607ef24e24de0b98367e4795e12e02e997f9f0e4c303b5af"
 
 [[package]]
 name = "proc-macro2"
