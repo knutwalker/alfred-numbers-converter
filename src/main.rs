@@ -136,7 +136,7 @@ impl FromStr for Format {
 
             (2..=36)
                 .contains(&base)
-                .then(|| Self::Custom(base))
+                .then_some(Self::Custom(base))
                 .ok_or(Error::BaseOutOfRange(base))
         } else {
             Err(Error::InvalidHint(s.to_string()))
