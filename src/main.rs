@@ -172,7 +172,8 @@ impl Number {
     fn convert(self) -> Vec<Item> {
         [Format::Binary, Format::Octal, Format::Decimal, Format::Hex]
             .into_iter()
-            .filter_map(|f| (f != self.format).then(|| f.item(self.value)))
+            .filter(|&f| f != self.format)
+            .map(|f| f.item(self.value))
             .collect()
     }
 }
