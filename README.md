@@ -1,8 +1,7 @@
 # Numbers Converter for Alfred
 
-[![Build status](https://img.shields.io/github/workflow/status/knutwalker/alfred-numbers-converter/build/main)](https://github.com/knutwalker/alfred-numbers-converter/actions?query=workflow%3Abuild)
+[![Build status](https://img.shields.io/github/actions/workflow/status/knutwalker/alfred-numbers-converter/build.yaml?branch=main)](https://github.com/knutwalker/alfred-numbers-converter/actions?query=workflow%3Abuild)
 [![Latest release](https://img.shields.io/github/v/release/knutwalker/alfred-numbers-converter)](https://github.com/knutwalker/alfred-numbers-converter/releases/latest)
-
 
 ## Alfred workflow to convert numbers
 
