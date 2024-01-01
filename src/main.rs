@@ -2,6 +2,7 @@ use powerpack::{Icon, Item};
 use std::{env, fmt::Display, iter::successors, num::ParseIntError, str::FromStr};
 
 type Result<T> = std::result::Result<T, Error>;
+type Num = i128;
 
 #[derive(Clone, Debug)]
 enum Error {
@@ -59,7 +60,7 @@ impl Format {
             Format::Custom(base) => base,
         };
 
-        let value = i64::from_str_radix(value, u32::from(base))
+        let value = Num::from_str_radix(value, u32::from(base))
             .map_err(|e| Error::InvalidNumber(value.to_string(), self, e))?;
         Ok(Number {
             value,
@@ -67,7 +68,7 @@ impl Format {
         })
     }
 
-    fn format(self, value: i64) -> String {
+    fn format(self, value: Num) -> String {
         match self {
             Format::Binary => format!("{:b}", value),
             Format::Octal => format!("{:o}", value),
@@ -87,7 +88,7 @@ impl Format {
         }
     }
 
-    fn item(self, value: i64) -> Item {
+    fn item(self, value: Num) -> Item {
         let item = self.format(value);
         Item::new(&item)
             .subtitle(self.to_string())
@@ -146,7 +147,7 @@ impl FromStr for Format {
 
 #[derive(Copy, Clone, Debug, PartialEq, Eq)]
 struct Number {
-    value: i64,
+    value: Num,
     format: Format,
 }
 
